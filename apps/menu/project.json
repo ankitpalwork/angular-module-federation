@@ -1,9 +1,9 @@
 {
-  "name": "shell",
+  "name": "menu",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "microfrontend",
-  "sourceRoot": "apps/shell/src",
+  "sourceRoot": "apps/menu/src",
   "tags": [],
   "targets": {
     "build": {
@@ -12,23 +12,23 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/shell",
-        "index": "apps/shell/src/index.html",
-        "main": "apps/shell/src/main.ts",
+        "outputPath": "dist/apps/menu",
+        "index": "apps/menu/src/index.html",
+        "main": "apps/menu/src/main.ts",
         "polyfills": [
           "zone.js"
         ],
-        "tsConfig": "apps/shell/tsconfig.app.json",
+        "tsConfig": "apps/menu/tsconfig.app.json",
         "assets": [
-          "apps/shell/src/favicon.ico",
-          "apps/shell/src/assets"
+          "apps/menu/src/favicon.ico",
+          "apps/menu/src/assets"
         ],
         "styles": [
-          "apps/shell/src/styles.scss"
+          "apps/menu/src/styles.scss"
         ],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/shell/webpack.config.js"
+          "path": "apps/menu/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -48,7 +48,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/shell/webpack.prod.config.js"
+            "path": "apps/menu/webpack.prod.config.js"
           }
         },
         "development": {
@@ -66,23 +66,23 @@
       "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "shell:build:production"
+          "browserTarget": "menu:build:production"
         },
         "development": {
-          "browserTarget": "shell:build:development"
+          "browserTarget": "menu:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
       }
     },
     "extract-i18n": {
       "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "shell:build",
-        "extraWebpackConfig": "apps/shell/webpack.config.js"
+        "browserTarget": "menu:build",
+        "extraWebpackConfig": "apps/menu/webpack.config.js"
       }
     },
     "lint": {
@@ -92,8 +92,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "apps/shell/**/*.ts",
-          "apps/shell/**/*.html"
+          "apps/menu/**/*.ts",
+          "apps/menu/**/*.html"
         ]
       }
     },
@@ -103,7 +103,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/shell/jest.config.ts",
+        "jestConfig": "apps/menu/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -116,7 +116,7 @@
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "shell:build"
+        "buildTarget": "menu:build"
       }
     }
   }

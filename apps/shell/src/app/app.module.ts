@@ -4,12 +4,27 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          outlet: 'menu',
+          loadChildren: () =>
+            loadRemoteModule({
+              remoteEntry: 'http://localhost:4201/remoteEntry.js',
+              remoteName: 'menu',
+              exposedModule: './Module',
+            }).then((m) => m.AppModule),
+        },
+      ],
+      { initialNavigation: 'enabledBlocking' }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
